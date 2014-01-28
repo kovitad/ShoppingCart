@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<package name="basicstruts2" extends="struts-default">
+		<action name="addToCart" class="com.pakallis.action.AddToCartAction">
+			<result name="success">cartView.jsp </result>
+		</action>
+		<action name="removeFromCart" class="com.pakallis.action.RemoveFromCartAction">
+			<result name="success">cartView.jsp</result>
+		</action>
+		<action name="changeAmount" class="com.pakallis.action.ChangeAmountAction">
+			<result name="success">cartView.jsp</result>
+			<result name="input">cartView.jsp</result>
+		</action>
+		<action name="viewProducts" >
+			<result>index.jsp</result>
+		</action>
+		<action name="checkout" class="com.pakallis.action.CheckoutAction">
+			<result>checkout.jsp</result>
+		</action>
+		<action name="complete" class="com.pakallis.action.CompleteAction">
+			<result name="success">/success.jsp</result>
+			<result name="input">/checkout.jsp</result>
+		</action>
+	</package>
+	
+</struts>

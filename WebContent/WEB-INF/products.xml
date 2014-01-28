@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+	<product>
+		<id>1</id>
+		<photo>images/eric.jpg</photo>
+		<description>BRAND NEW SONY ERICSSON CEDAR J108i SKYPE MOBILE PHONE</description>
+		<price>90.87</price>
+	</product>
+	<product>
+		<id>2</id>
+		<photo>images/motor.jpg</photo>
+		<description>MOTOROLA V3 RAZR MOBILE PHONE</description>
+		<price>48.45</price>
+	</product>
+	<product>
+		<id>3</id>
+		<photo>images/iphone.jpg</photo>
+		<description>IPHONE 3GS 16GB BLACK FACTORY</description>
+		<price>211.60</price>
+	</product>
+	<product>
+		<id>4</id>
+		<photo>images/sams.jpg</photo>
+		<description>Samsung Chat 222 Dual Sim
+		</description>
+		<price>86.03</price>
+	</product>
+	<product>
+		<id>5</id>
+		<photo>images/bina.jpg</photo>
+		<description>Binatone BB500 Big Button FLIP	</description>
+		<price>69.52</price>
+	</product>
+</products>
