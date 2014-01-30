@@ -2,16 +2,11 @@ package com.kovitad.action.register;
 
 import javax.servlet.http.HttpServletRequest;
 
-
-
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.kovitad.model.Customer;
 import com.opensymphony.xwork2.ActionSupport;
-
-import org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter;
 
 public class UserRegistrationAction extends ActionSupport implements ServletRequestAware{
 	

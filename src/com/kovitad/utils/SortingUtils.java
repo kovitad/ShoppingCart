@@ -21,13 +21,14 @@ public class SortingUtils {
 			int expectedMininumIndex = i;
 			for (int j = i + 1; j < input.length; j++) {
 				if (input[expectedMininumIndex] > input[j]) {
-					swapIt(input, expectedMininumIndex, j);
 					expectedMininumIndex = j;
 				}
 			}
+			swapIt(input, expectedMininumIndex, i);
 		}
 	}
 
+	
 	public static int[] mergeSort(int[] input) {
 		if (input.length > 1) {
 			// divide and conquer ... until sorted
@@ -38,9 +39,9 @@ public class SortingUtils {
 
 		}
 		return input;
-
 	}
 
+	
 	public static void merge(int[] left, int[] right, int[] input) {
 
 		int leftSideIndex = 0;
@@ -48,13 +49,6 @@ public class SortingUtils {
 		int rightSideIndex = 0;
 
 		for (int i = 0; i < input.length; i++) {
-
-			/*
-			 * System.out.println("left length:"+left.length);
-			 * System.out.println("leftSideIndex:"+leftSideIndex);
-			 * System.out.println("right length:"+right.length);
-			 * System.out.println("rightSideIndex:"+rightSideIndex);
-			 */
 			if (rightSideIndex >= right.length
 					|| (leftSideIndex < left.length && left[leftSideIndex] <= right[rightSideIndex])) {
 				// Take from left
@@ -66,13 +60,7 @@ public class SortingUtils {
 				rightSideIndex++;
 			}
 
-			/*
-			 * if (rightSideIndex >= right.length || (leftSideIndex <
-			 * left.length && left[leftSideIndex] <= right[rightSideIndex])) {
-			 * input[i] = left[leftSideIndex]; // take from left
-			 * leftSideIndex++; } else { input[i] = right[rightSideIndex]; //
-			 * take from right rightSideIndex++; }
-			 */
+			
 
 		}
 
