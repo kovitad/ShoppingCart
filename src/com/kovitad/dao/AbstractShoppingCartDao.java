@@ -1,6 +1,6 @@
 package com.kovitad.dao;
 
-
+import org.springframework.web.accept.ContentNegotiationStrategy;
 public class AbstractShoppingCartDao {
 
 	

@@ -19,6 +19,7 @@ public class SecurityConfiguration  {
             .inMemoryAuthentication()
                 .withUser("user").password("password").roles("USER").and()
                 .withUser("admin").password("password").roles("USER", "ADMIN");
+       
     }
 
     @Configuration
@@ -43,7 +44,8 @@ public class SecurityConfiguration  {
                 .authorizeRequests()
                     .anyRequest().authenticated()
                     .and()
-                .formLogin();
+                .formLogin()
+                .loginPage("/login.jsp");
         }
     }
 	
