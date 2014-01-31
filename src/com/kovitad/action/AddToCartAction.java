@@ -14,11 +14,13 @@ public class AddToCartAction extends ActionSupport implements
 
 	private static final long serialVersionUID = 1446375720940600904L;
 
+	public static final String CART_SESSION_KEY = "cart";
+	
 	private HttpServletRequest request;
 
 	public String execute() throws Exception {
 		HttpSession session = request.getSession();
-		Cart cart = (Cart) session.getAttribute("cart");
+		Cart cart = (Cart) session.getAttribute(CART_SESSION_KEY);
 		if (cart == null) {
 			cart = new Cart();
 		}

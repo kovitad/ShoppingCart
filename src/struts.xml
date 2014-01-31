@@ -5,23 +5,23 @@
 <struts>
 	<constant name="struts.devMode" value="true" />
 	<package name="basicstruts2" extends="struts-default">
-		<action name="addToCart" class="com.pakallis.action.AddToCartAction">
+		<action name="addToCart" class="com.kovitad.action.AddToCartAction">
 			<result name="success">cartView.jsp </result>
 		</action>
-		<action name="removeFromCart" class="com.pakallis.action.RemoveFromCartAction">
+		<action name="removeFromCart" class="com.kovitad.action.RemoveFromCartAction">
 			<result name="success">cartView.jsp</result>
 		</action>
-		<action name="changeAmount" class="com.pakallis.action.ChangeAmountAction">
+		<action name="changeAmount" class="com.kovitad.action.ChangeAmountAction">
 			<result name="success">cartView.jsp</result>
 			<result name="input">cartView.jsp</result>
 		</action>
 		<action name="viewProducts" >
 			<result>index.jsp</result>
 		</action>
-		<action name="checkout" class="com.pakallis.action.CheckoutAction">
+		<action name="checkout" class="com.kovitad.action.CheckoutAction">
 			<result>checkout.jsp</result>
 		</action>
-		<action name="complete" class="com.pakallis.action.CompleteAction">
+		<action name="complete" class="com.kovitad.action.CompleteAction">
 			<result name="success">/success.jsp</result>
 			<result name="input">/checkout.jsp</result>
 		</action>
