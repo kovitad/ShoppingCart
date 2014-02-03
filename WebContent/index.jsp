@@ -1,51 +1,69 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
+<!DOCTYPE html>
+<html lang="en-AU">
 <head>
-<title>E-shop</title>
+<meta charset="UTF-8">
+<title>Promotion</title>
+<style type="text/css">
+p {
+	margin: 1.5em 0;
+}
 
-<link type="text/css" rel="stylesheet" href="css/default.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/jquery.lightbox-0.5.css" media="screen" />
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jquery.lightbox-0.5.js"></script>
+div {
+	border: 5px solid rgba(0, 0, 0, 0.3);
+	background: rgba(255, 255, 255, 0.2);
+	padding: 0 20px;
+	border-radius: 20px;
+	box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4) inset, 15px 15px 10px 5px
+		rgba(0, 0, 0.1, 0.4);
+}
+</style>
 </head>
 <body>
-
-<div id="navigation">
-
-<div id="products">
-
-<table>
-	<thead>
-		<tr>
-			<th>Image</th>
-			<th>Description</th>
-			<th>Price</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach var="product" items="${product_list}">
-			<tr>
-				<td><a href="${product.img}" class="lightbox"> <img
-					width="60" height="60" src="${product.img}"></img></a></td>
-				<td>${product.description}</td>
-				<td>${product.price} &euro;</td>
-				<td>
-					<s:action name="addToCart"></s:action>
-					<s:param name="id">${product.id}</s:param>
-					<s:param name="description">${product.description}</s:param>
-					<s:param name="price">${product.price} </s:param>
-					<s:param name="img">${product.img}</s:param>
-			   </td>
-			</tr>
-		</c:forEach>
-	</tbody>
-</table>
-</div>
-</div>
-<script type="text/javascript">
-	$('a.lightbox').lightBox();
-</script>
+	<header id="branding">
+		<!-- page header (not in section etc) -->
+		<h1>Shopping Store</h1>
+	</header>
+	<nav>
+		<ul>
+			<li>Main navigation</li>
+		</ul>
+	</nav>
+	<div id="content">
+		<article>
+			<hgroup>
+				<h1>Article heading</h1>
+				<h2>Article subheading</h2>
+			</hgroup>
+			<p>Some text</p>
+			<section>
+				<h2>Section heading</h2>
+				<p>
+					
+				</p>
+				<ol type="I">
+					<li value="7">seventh item</li>
+					<li>eighth item</li>
+					<li>ninth item</li>
+				</ol>
+			</section>
+			<section>
+				<h2>Another section heading</h2>
+				<p>A little more text</p>
+			</section>
+		</article>
+		<blockquote>
+			<p>
+				<strong>Dogs are the best!</strong> They are <em>obviously</em> much
+				cooler than monkeys, even if
+				<mark>the first animal in space was a monkey</mark>
+				.
+			</p>
+		</blockquote>
+	</div>
+	<footer id="footer">
+		
+	</footer>
 </body>
 </html>

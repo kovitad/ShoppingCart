@@ -26,12 +26,9 @@ public class SecurityConfiguration  {
     @Order(1)                                                        
     public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
-            http
-                .antMatcher("/api/**")                               
-                .authorizeRequests()
-                    .anyRequest().hasRole("ADMIN")
-                    .and()
-                .httpBasic();
+        	http.antMatcher("/index.jsp").authorizeRequests().anyRequest().permitAll();
+        	http.antMatcher("/login.jsp").authorizeRequests().anyRequest().permitAll();
+           
         }
     }
 
