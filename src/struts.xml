@@ -15,9 +15,11 @@
 			<result name="success">cartView.jsp</result>
 			<result name="input">cartView.jsp</result>
 		</action>
+		
 		<action name="viewProducts">
 			<result>index.jsp</result>
 		</action>
+		 
 		<action name="checkout" class="com.kovitad.action.CheckoutAction">
 			<result>checkout.jsp</result>
 		</action>
@@ -31,9 +33,14 @@
 		</action>
 		<action name="loginfailed">
 			<result>login.jsp?error=true</result>
+			
 		</action>
 		<action name="welcome">
 			<result>secure/hello.jsp</result>
+		</action>
+		<action name="productManage"   class="productClass">
+		    <result name="success">/index.jsp</result>
+		    <result name="input">/index.jsp</result>
 		</action>
 	</package>
 

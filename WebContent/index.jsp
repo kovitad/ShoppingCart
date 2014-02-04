@@ -31,39 +31,18 @@ div {
 		</ul>
 	</nav>
 	<div id="content">
-		<article>
-			<hgroup>
-				<h1>Article heading</h1>
-				<h2>Article subheading</h2>
-			</hgroup>
-			<p>Some text</p>
-			<section>
-				<h2>Section heading</h2>
-				<p>
-					
-				</p>
-				<ol type="I">
-					<li value="7">seventh item</li>
-					<li>eighth item</li>
-					<li>ninth item</li>
-				</ol>
-			</section>
-			<section>
-				<h2>Another section heading</h2>
-				<p>A little more text</p>
-			</section>
-		</article>
-		<blockquote>
-			<p>
-				<strong>Dogs are the best!</strong> They are <em>obviously</em> much
-				cooler than monkeys, even if
-				<mark>the first animal in space was a monkey</mark>
-				.
-			</p>
-		</blockquote>
-	</div>
-	<footer id="footer">
 		
-	</footer>
+		<h1>sdfsdfsd : ${abc} </h1>
+		<c:forEach var="a" items="${products}">
+			<article>
+				<hgroup>
+					<h2>${a}</h2>
+				</hgroup>
+				
+			</article>
+		</c:forEach>
+		
+	</div>
+	<footer id="footer"> </footer>
 </body>
 </html>

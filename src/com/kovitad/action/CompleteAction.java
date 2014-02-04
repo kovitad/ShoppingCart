@@ -1,14 +1,22 @@
 package com.kovitad.action;
 
-import com.opensymphony.xwork2.ActionSupport;
 
-public class CompleteAction extends ActionSupport {
+public class CompleteAction extends BaseApplicationAction {
+
+	private static final long serialVersionUID = 3396968687057458941L;
+	
 	public String name;
 	public String surname;
 	public String email;
 	public String address;
 	public String telephone;
 
+	@Override
+	public void prepare() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public String execute() {
 		return SUCCESS;
 	}
@@ -76,4 +84,6 @@ public class CompleteAction extends ActionSupport {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
+
+	
 }

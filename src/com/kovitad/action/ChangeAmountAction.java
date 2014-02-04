@@ -3,19 +3,21 @@ package com.kovitad.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.struts2.interceptor.ServletRequestAware;
-
 import com.kovitad.model.Cart;
-import com.opensymphony.xwork2.ActionSupport;
 
-public class ChangeAmountAction extends ActionSupport implements
-		ServletRequestAware {
-	private static final long serialVersionUID = 1L;
-	private HttpServletRequest request;
+public class ChangeAmountAction extends BaseApplicationAction {
+
+
+	private static final long serialVersionUID = 7746405764436655826L;
+
 	private int amount;
 	private int id;
 
 
+	@Override
+	public void prepare() throws Exception {
+		
+	}
 	
 	public String execute() throws Exception {
 
@@ -23,8 +25,6 @@ public class ChangeAmountAction extends ActionSupport implements
 		int id = Integer.parseInt(request.getParameter("id"));
 		HttpSession session = request.getSession();
 		Cart cart = (Cart) session.getAttribute("cart");
-		int total_price = 0;
-		
 		if (this.amount <= 0) {
 			return ERROR;
 		}
@@ -61,4 +61,5 @@ public class ChangeAmountAction extends ActionSupport implements
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 }
