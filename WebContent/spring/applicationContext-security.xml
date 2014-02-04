@@ -1,0 +1,86 @@
+<bean:beans xmlns:bean="http://www.springframework.org/schema/beans"
+	xmlns="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+		
+	<bean:bean id="securityContextPersistenceFilter"
+		class="org.springframework.security.web.context.SecurityContextPersistenceFilter">
+		<bean:property name="forceEagerSessionCreation" value="true" />
+	</bean:bean>
+	
+	<http use-expressions="true" entry-point-ref="loginEntryPoint">
+		<remember-me key="remembercoe7please" />
+		<intercept-url pattern="/javax.faces.resource/**"
+			access="permitAll" />
+		<intercept-url pattern="/resources/freemarker/**"
+			access="permitAll" />
+		<intercept-url pattern="/css/**" access="permitAll" />
+		<intercept-url pattern="/shopping/**" access="permitAll" />
+		<intercept-url pattern="/signup/*" access="permitAll" />
+		<intercept-url pattern="/file/**" access="permitAll" />
+		<intercept-url pattern="/images/**" access="permitAll" />
+		<intercept-url pattern="/image/**" access="permitAll" />
+		<intercept-url pattern="/login*" access="permitAll" />
+		<intercept-url pattern="/index*" access="permitAll" />
+		<intercept-url pattern="/openid*" access="permitAll" />
+		<intercept-url pattern="/register*" access="permitAll" />
+		<intercept-url pattern="/signup/**" access="permitAll" />
+		<intercept-url pattern="/connect*" access="permitAll" />
+		<intercept-url pattern="/connect/**" access="permitAll" />
+		<intercept-url pattern="/facebook/**" access="permitAll" />
+		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+		<access-denied-handler error-page="/errors/accessdenied.jsf" />
+		<custom-filter ref="socialSecurityFilter" position="FORM_LOGIN_FILTER" />
+		<!--  
+		<custom-filter ref="domainUsernamePasswordAuthenticationFilter"
+			position="FORM_LOGIN_FILTER" />
+		-->
+		<logout logout-url="/logout" logout-success-url="/login.jsf" />
+		<logout delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE"
+			invalidate-session="true" logout-success-url="/login.jsf" />
+	</http>
+	<authentication-manager alias="authenticationManager">
+		 <authentication-provider ref="socialAuthenticationProvider"/>
+	</authentication-manager>
+	
+ 	<bean:bean xmlns="http://www.springframework.org/schema/beans"
+		id="socialSecurityFilter" class="com.coe7.service.SocialSecurityFilter">
+		<constructor-arg index="0" ref="authenticationManager" />
+		<constructor-arg index="1" ref="userIdSource" />
+		<constructor-arg index="2" ref="usersConnectionRepository" />
+		<constructor-arg index="3" ref="connectionFactoryLocator" />
+		<property name="authenticationManager" ref="authenticationManager" />	
+	</bean:bean>
+	
+	<bean:bean id="encoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+		
+	<bean:bean xmlns="http://www.springframework.org/schema/beans"
+		id="domainUsernamePasswordAuthenticationFilter" class="com.coe7.service.DomainUsernamePasswordAuthenticationFilter">
+		<property name="filterProcessesUrl" value="/securitycheck" />
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="usernameParameter" value="username" />
+		<property name="passwordParameter" value="password" />
+		<property name="authenticationSuccessHandler">
+			<bean
+				class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+				<property name="defaultTargetUrl" value="/member/home.jsf" />
+			</bean>
+		</property>
+		<property name="authenticationFailureHandler">
+			<bean
+				class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+				<property name="defaultFailureUrl" value="/error/accessdenied.jsf" />
+			</bean>
+		</property>
+	</bean:bean>
+
+	<bean:bean xmlns="http://www.springframework.org/schema/beans"
+		id="loginEntryPoint"
+		class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<bean:constructor-arg value="/login.jsf" />
+	</bean:bean>
+
+</bean:beans>
