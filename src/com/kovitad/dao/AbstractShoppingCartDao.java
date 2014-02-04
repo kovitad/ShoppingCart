@@ -1,13 +1,17 @@
 package com.kovitad.dao;
 
-import org.springframework.web.accept.ContentNegotiationStrategy;
-public class AbstractShoppingCartDao {
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
+
+public abstract class AbstractShoppingCartDao <T>{
+
+	@PersistenceContext
+	private EntityManager entityManager;
 	
-	public static void method() {
-
-		System.out.println("Called");
-
+	public EntityManager getEM(){
+		return entityManager;
 	}
+	public abstract T save(T object);
 
 }

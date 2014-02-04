@@ -14,8 +14,11 @@
          http://www.springframework.org/schema/context/spring-context.xsd
          http://www.springframework.org/schema/tx
          http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+    
+    <context:annotation-config/>
 	<bean id="myEmf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
 		<property name="persistenceUnitName" value="myUnit" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -25,7 +28,13 @@
 			</bean>
 		</property>
 	</bean>
-
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/coe7" />
+		<property name="username" value="COE7" />
+		<property name="password" value="d075ae0ef9a34d20b3793235e0365d41" />
+	</bean>
 	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="myEmf" />
 	</bean>
