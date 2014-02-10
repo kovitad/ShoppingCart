@@ -15,86 +15,140 @@
  */
 package com.kovitad.domain;
 
+import java.io.IOException;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Transient;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+
+import com.kovitad.utils.Base64Coder;
 
 /**
  * @author <a href="mailto:cleclerc@cloudbees.com">Cyrille Le Clerc</a>
  */
 @Entity
 public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String name;
-    private String imageUrl;
-    private String imageCreditsUrl;
+	private static final Logger logger = Logger.getLogger(Product.class);
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	private String name;
+	
+	@Lob
+	@Column(name = "PRODUCT_IMAGE", nullable = true, columnDefinition = "mediumblob")
+	private byte[] image;
+	
+	private String imageType;
+	
+	private String imageUrl;
+	
+	private String imageCreditsUrl;
 
-    public Product() {
-    }
+	
+	public Product() {
+	}
 
-    public Product(String name, String imageUrl, String imageCreditsUrl) {
-        this.name = name;
-        this.imageUrl = imageUrl;
-        this.imageCreditsUrl = imageCreditsUrl;
-    }
+	public Product(String name, String imageUrl, String imageCreditsUrl) {
+		this.name = name;
+		this.imageUrl = imageUrl;
+		this.imageCreditsUrl = imageCreditsUrl;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+	public byte[] getImage() {
+		return image;
+	}
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
 
-    public String getImageCreditsUrl() {
-        return imageCreditsUrl;
-    }
+	public String getImageUrl() {
+		return imageUrl;
+	}
 
-    public void setImageCreditsUrl(String imageCreditsUrl) {
-        this.imageCreditsUrl = imageCreditsUrl;
-    }
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Product)) return false;
+	public String getImageCreditsUrl() {
+		return imageCreditsUrl;
+	}
 
-        Product product = (Product) o;
+	public void setImageCreditsUrl(String imageCreditsUrl) {
+		this.imageCreditsUrl = imageCreditsUrl;
+	}
 
-        if (id != null ? !id.equals(product.id) : product.id != null) return false;
+	public String getImageType() {
+		return imageType;
+	}
 
-        return true;
-    }
+	public void setImageType(String imageType) {
+		this.imageType = imageType;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (!(o instanceof Product))
+			return false;
 
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
-    }
+		Product product = (Product) o;
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+		if (id != null ? !id.equals(product.id) : product.id != null)
+			return false;
+
+		return true;
+	}
+	
+	@Transient
+	public String getImageSrc() {
+		
+		StringBuilder prefix = new StringBuilder("data:");
+		if(StringUtils.isNotBlank(this.imageType)){
+			prefix.append(this.imageType);
+			prefix.append(";base64,");
+			
+				//String encodeArrayString = encodeArray(this.image);
+				prefix.append(new String(this.image));
+			
+			logger.info(prefix.toString());
+		}
+		
+		return prefix.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		return id != null ? id.hashCode() : 0;
+	}
+
+	@Override
+	public String toString() {
+		return "Product{" + "id=" + id + ", name='" + name + '\'' + '}';
+	}
 }

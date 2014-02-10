@@ -15,11 +15,11 @@
 			<result name="success">cartView.jsp</result>
 			<result name="input">cartView.jsp</result>
 		</action>
-		
+
 		<action name="viewProducts">
 			<result>index.jsp</result>
 		</action>
-		 
+
 		<action name="checkout" class="com.kovitad.action.CheckoutAction">
 			<result>checkout.jsp</result>
 		</action>
@@ -33,14 +33,30 @@
 		</action>
 		<action name="loginfailed">
 			<result>login.jsp?error=true</result>
-			
+
 		</action>
 		<action name="welcome">
 			<result>secure/hello.jsp</result>
 		</action>
-		<action name="productManage"   class="productClass">
-		    <result name="success">/index.jsp</result>
-		    <result name="input">/index.jsp</result>
+		<action name="productManage" class="productClass">
+			<result name="success">/index.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<action name="productUpdate" class="fileUploadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">2097152</param>
+				<param name="allowedTypes">
+					image/png,image/gif,image/jpeg,image/pjpeg
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">/secure/successUpload.jsp</result>
+			<result name="input">/secure/uploadFile.jsp</result>
+		</action>
+		
+		<action name="listProduct" class="fileUploadAction" method="listProducts">
+			<result name="success">/secure/listProducts.jsp</result>
 		</action>
 	</package>
 

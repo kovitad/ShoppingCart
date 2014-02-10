@@ -49,6 +49,11 @@
 	</properties>
 
 	<dependencies>
+	    <dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
+		</dependency>
 		<!-- Spring Core -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -349,7 +354,7 @@
 			<version>${jodatime-jsptags.version}</version>
 		</dependency>
 		
-
+		
 	</dependencies>
 	<repositories>
 		<!-- ... possibly other repository elements ... -->

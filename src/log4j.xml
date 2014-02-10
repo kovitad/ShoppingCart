@@ -11,14 +11,14 @@
  
     <!-- specify the logging level for loggers from other libraries -->
     <logger name="com.opensymphony">
-    	<level value="ERROR" />
+    	<level value="INFO" />
     </logger>
 
     <logger name="org.apache.struts2">
-    	 <level value="ERROR" />
+    	 <level value="INFO" />
     </logger>
     <logger name="org.springframework.security.core.SpringSecurityCoreVersion">
-       <level value="ERROR" />
+       <level value="INFO" />
     </logger>
    <!-- for all other loggers log only debug and above log messages -->
      <root>
