@@ -15,8 +15,6 @@
  */
 package com.kovitad.domain;
 
-import java.io.IOException;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,16 +22,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
-
-import com.kovitad.utils.Base64Coder;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  * @author <a href="mailto:cleclerc@cloudbees.com">Cyrille Le Clerc</a>
  */
+@JsonIgnoreProperties({"image","imageSrc"})
 @Entity
+@XmlRootElement
 public class Product {
 	private static final Logger logger = Logger.getLogger(Product.class);
 	@Id
@@ -42,6 +43,8 @@ public class Product {
 	
 	private String name;
 	
+	
+	@XmlTransient
 	@Lob
 	@Column(name = "PRODUCT_IMAGE", nullable = true, columnDefinition = "mediumblob")
 	private byte[] image;

@@ -4,14 +4,13 @@ import java.util.List;
 
 import javax.persistence.TypedQuery;
 
-import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kovitad.domain.Product;
 
 
-@Repository
+@Repository(value="productDao")
 @Transactional(value="txManager")
 public class ProductDao extends AbstractShoppingCartDao<Product> {
 	@Override

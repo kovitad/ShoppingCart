@@ -9,7 +9,4 @@
     <context:component-scan base-package="com.kovitad"/>
     <tx:annotation-driven/>
     <context:annotation-config/>
-  	<bean id="productClass" class="com.kovitad.action.ProductListingAction" init-method="init">
-  	    
-  	</bean>
 </beans>

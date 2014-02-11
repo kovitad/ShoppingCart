@@ -1,48 +1,50 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en-AU">
+<html lang="en-AU" ng-app='myApp'>
 <head>
 <meta charset="UTF-8">
-<title>Promotion</title>
-<style type="text/css">
-p {
-	margin: 1.5em 0;
-}
-
-div {
-	border: 5px solid rgba(0, 0, 0, 0.3);
-	background: rgba(255, 255, 255, 0.2);
-	padding: 0 20px;
-	border-radius: 20px;
-	box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4) inset, 15px 15px 10px 5px
-		rgba(0, 0, 0.1, 0.4);
-}
-</style>
+<title>Welcome to My Store</title>
+<link rel="shortcut icon"
+	href="<c:url value="/css/images/favicon.ico"/>" />
+<link rel="stylesheet" href="<c:url value="/css/style.css"/>"
+	type="text../css" media="all" />
+<!--[if IE 6]>
+	<link rel="stylesheet" href="./css/ie6.css" type="text../css" media="all" />	
+	<![endif]-->
+<link rel="stylesheet"
+	href="<c:url value="/css/jquery.jscrollpane.css"/>" type="text../css"
+	media="all" />
+<script src="<c:url value="/js/jquery-1.7.min.js"/>"
+	type="text/javascript"></script>
+<script src="<c:url value="/js/DD_belatedPNG-min.js"/>"
+	type="text/javascript"></script>
+<script src="<c:url value="/js/jquery.jscrollpane.min.js"/>"
+	type="text/javascript"></script>
+<script src="<c:url value="/js/jquery.jcarousel.js"/>"
+	type="text/javascript"></script>
+<script src="<c:url value="/js/functions.js"/>" type="text/javascript"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
 </head>
-<body>
+<body ng-controller="TextController">
 	<header id="branding">
 		<!-- page header (not in section etc) -->
 		<h1>Shopping Store</h1>
 	</header>
 	<nav>
-		<ul>
-			<li>Main navigation</li>
-		</ul>
+		<p>{{someText.message}}</p>
+		<div ng-repeat="item in items">
+		
+		</div>
 	</nav>
-	<div id="content">
-		
-		<h1>sdfsdfsd : ${abc} </h1>
-		<c:forEach var="a" items="${products}">
-			<article>
-				<hgroup>
-					<h2>${a}</h2>
-				</hgroup>
-				
-			</article>
-		</c:forEach>
-		
-	</div>
-	<footer id="footer"> </footer>
+	<script>
+		var myAppModule = angular.module('myApp', []);
+		myAppModule.controller('TextController', function($scope) {
+			var someText = {};
+			someText.message = 'You have started your journey 1.';
+			$scope.someText = someText;
+		});
+	</script>
 </body>
 </html>
