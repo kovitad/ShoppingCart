@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en-AU" ng-app='myApp'>
+<html lang="en-AU" ng-app="myApp">
 <head>
 <meta charset="UTF-8">
 <title>Welcome to My Store</title>
@@ -26,25 +26,32 @@
 <script src="<c:url value="/js/functions.js"/>" type="text/javascript"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+<script src="<c:url value="/js/Services.js"/>" type="text/javascript"></script>
 </head>
 <body ng-controller="TextController">
 	<header id="branding">
 		<!-- page header (not in section etc) -->
 		<h1>Shopping Store</h1>
 	</header>
-	<nav>
+	<div style="border-color: aqua; padding-top: 150px;"  >
 		<p>{{someText.message}}</p>
-		<div ng-repeat="item in items">
-		
+		<div   ng-repeat="item in items">
+			<p>{{item.name}}</p>
 		</div>
-	</nav>
+	</div>
 	<script>
 		var myAppModule = angular.module('myApp', []);
-		myAppModule.controller('TextController', function($scope) {
+		myAppModule.controller('TextController', function($scope, $http) {
 			var someText = {};
 			someText.message = 'You have started your journey 1.';
 			$scope.someText = someText;
+			$http.get('/shoppingcart/services/productListing', {
+				cache : true
+			}).success(function(data, status, headers, config) {
+				$scope.items = data;
+			});
 		});
+			
 	</script>
 </body>
 </html>
