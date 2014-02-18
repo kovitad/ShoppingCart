@@ -44,6 +44,12 @@
 			<result name="input">/index.jsp</result>
 		</action>
 
+		<action name="register" class="registerClass">
+		    <result name="success">/index.jsp</result>
+		    <result name="input">/register.jsp</result>
+		    
+		</action>
+		
 		<action name="productUpdate" class="fileUploadAction">
 			<interceptor-ref name="fileUpload">
 				<param name="maximumSize">2097152</param>

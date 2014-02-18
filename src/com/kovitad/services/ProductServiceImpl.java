@@ -18,7 +18,7 @@ import com.kovitad.dao.ProductDao;
 import com.kovitad.domain.Product;
 
 @Path("/productListing")
-@Component
+@Component(value="productClass")
 public class ProductServiceImpl implements ProductService {
 	Logger logger = Logger.getLogger(ProductServiceImpl.class);
 	@Resource

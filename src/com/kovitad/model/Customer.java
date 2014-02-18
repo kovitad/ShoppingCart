@@ -49,4 +49,14 @@ public class Customer implements Serializable {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
+	
+	public static void main(String[] argv) {
+		
+		int a = (10 << 3);
+
+		int real = 4;
+		int z = 10 >> (real<<2);
+		
+		System.out.println(real>>2);
+	}
 }

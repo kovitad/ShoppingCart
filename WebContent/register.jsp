@@ -32,7 +32,6 @@
 			<h1 id="logo">
 				<a title="Home" href="#">Kovitad Store</a>
 			</h1>
-			
 			<!-- Search -->
 			<div class="search-expand"></div>
 			<div id="search">
@@ -46,7 +45,55 @@
 			</div>
 		</div>
 		<div id="content" style="padding-top: 5cm">
-			<p><h1>Welcome</h1>
+			<div id="main">
+				<div class="box">
+					<div class="middle" id="register">
+						<div class="post">
+							<p>
+								<span>Registration Form</span>
+							</p>
+							<p>Please enter your details.</p>
+						</div>
+
+						<s:form action="register" labelposition="left">
+							<table>
+								<tbody>
+									<tr>
+										<td>First Name:</td>
+										<td><s:textfield key="firstName" maxlength="255" /></td>
+									</tr>
+									<tr>
+										<td>Last Name:</td>
+										<td><s:textfield key="lastName" maxlength="255" /></td>
+									</tr>
+									<tr>
+										<td>Email:</td>
+										<td><s:textfield key="Email" maxlength="255" /></td>
+									</tr>
+									<tr>
+										<td>User Name:</td>
+										<td><s:textfield key="userName" maxlength="255" /></td>
+									</tr>
+									<tr>
+										<td>Password:</td>
+										<td><s:password key="password" maxlength="255" /></td>
+									</tr>
+									<tr>
+										<td>Confirm Password:</td>
+										<td><s:password key="confirmPassword" maxlength="255" /></td>
+									</tr>
+									<tr>
+										<td colspan="2"><s:submit label="Submit" /> <s:reset
+												label="Reset" /></td>
+
+									</tr>
+
+								</tbody>
+							</table>
+						</s:form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

@@ -1,18 +1,27 @@
 package com.kovitad.utils;
 
-import org.w3c.dom.*;
-import org.xml.sax.SAXException;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
+
+import com.kovitad.domain.Product;
+import com.kovitad.model.Customer;
 
 public class DOMParserUtils {
-	public static void main(String argv[]) {
+	public static void main(String argv[]) throws JAXBException {
 //		if (argv.length != 1) {
 //			System.err.println("Usage: java DOMEcho filename");
 //			System.exit(1);
@@ -47,6 +56,7 @@ public class DOMParserUtils {
 			// I/O error
 			ioe.printStackTrace();
 		}
+		testParseXMLStream("");
 	}
 
 	/** Recursive implementation of traversing the DOM tree and printing nodes. */
@@ -104,4 +114,13 @@ public class DOMParserUtils {
 	public static void print(String s) {
 		System.out.print(s);
 	}
+	
+	public static void testParseXMLStream(final String xmlStr) throws JAXBException {
+		Customer test = new Customer();
+		JAXBContext jc = JAXBContext.newInstance(Customer.class);
+		Marshaller  mar = jc.createMarshaller();
+		mar.marshal(test, System.out);
+		
+	}
+	
 }
