@@ -1,0 +1,10 @@
+<serviceGroup>
+  <service name="HelloWs" targetNamespace="http://com.kovitad/">
+    <description>JNLPGenerator service</description>
+    <schema schemaNamespace="http://com.kovitad" />
+    <parameter name="ServiceClass" locked="false">com.kovitad.services.HelloWs</parameter>
+    <operation name="sayHello">
+      <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+    </operation>
+  </service>
+</serviceGroup>

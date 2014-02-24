@@ -46,6 +46,8 @@
 
 		<mysql.version>5.1.22</mysql.version>
 
+		<org.apache.axis2.version>1.6.1</org.apache.axis2.version>
+
 	</properties>
 
 	<dependencies>
@@ -55,7 +57,7 @@
 			<artifactId>jaxb-impl</artifactId>
 			<version>2.2.7</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.sun.xml.parsers</groupId>
 			<artifactId>jaxp-ri</artifactId>
@@ -301,6 +303,34 @@
 			<version>2.6</version>
 		</dependency>
 
+		<!-- Axis2 -->
+
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2</artifactId>
+			<version>${org.apache.axis2.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2-spring</artifactId>
+			<version>${org.apache.axis2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2-transport-http</artifactId>
+			<version>${org.apache.axis2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2-transport-local</artifactId>
+			<version>${org.apache.axis2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.6.0</version>
+		</dependency>
 
 		<!-- Spring Security -->
 		<dependency>
@@ -393,7 +423,7 @@
 		</repository>
 	</repositories>
 	<build>
-	    <defaultGoal>install</defaultGoal>
+		<defaultGoal>install</defaultGoal>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -409,6 +439,16 @@
 				<version>2.3</version>
 				<configuration>
 					<warName>ShoppingCard</warName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-aar-maven-plugin</artifactId>
+				<version>1.6.1</version>
+				<!--<version>${orbit.version.axis2}</version> -->
+				<extensions>true</extensions>
+				<configuration>
+					<aarName>org.fazlan.employee.axis2.orm.spring.service</aarName>
 				</configuration>
 			</plugin>
 		</plugins>

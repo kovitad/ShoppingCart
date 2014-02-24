@@ -8,9 +8,6 @@
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
 	<listener>
@@ -61,6 +58,16 @@
         <servlet-name>SpringApplication</servlet-name>
         <url-pattern>/services/*</url-pattern>
     </servlet-mapping>
-	
+	<servlet>
+  	<servlet-name>AxisServlet</servlet-name>
+	  <servlet-class>
+	   org.apache.axis2.transport.http.AxisServlet
+	  </servlet-class>
+	  <load-on-startup>1</load-on-startup>
+ 	</servlet>
+ 	<servlet-mapping>
+	    <servlet-name>AxisServlet</servlet-name>
+	    <url-pattern>/axis/*</url-pattern>
+	 </servlet-mapping>
 	
 </web-app>

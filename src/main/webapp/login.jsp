@@ -63,7 +63,7 @@
 							method='POST'>
 							<table>
 								<tr>
-									<td>User Name:</td>
+									<td><s:label key="label.username"/></td>
 									<td><input type='text' name='j_username' value=''></td>
 								</tr>
 								<tr>
