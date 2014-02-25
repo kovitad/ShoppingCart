@@ -1,10 +1,25 @@
 <serviceGroup>
-  <service name="HelloWs" targetNamespace="http://com.kovitad/">
-    <description>JNLPGenerator service</description>
-    <schema schemaNamespace="http://com.kovitad" />
-    <parameter name="ServiceClass" locked="false">com.kovitad.services.HelloWs</parameter>
-    <operation name="sayHello">
-      <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
-    </operation>
-  </service>
+    <messageReceiver
+				class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+	<service name="HelloWs" targetNamespace="http://com.kovitad/">
+		<description>JNLPGenerator service</description>
+		<schema schemaNamespace="http://com.kovitad" />
+		<parameter name="ServiceClass" locked="false">com.kovitad.services.HelloWs
+		</parameter>
+		<operation name="sayHello">
+			<messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+		</operation>
+	</service>
+
+	<service name="ProductWs">
+		<description>
+			Example of simple spring service export
+		</description>
+		<parameter name="ServiceObjectSupplier">org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier</parameter>
+		<parameter name="SpringBeanName">exportProductServiceClass</parameter>
+		<operation name="listAll">
+		    <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+		</operation>
+	</service>
+	
 </serviceGroup>
