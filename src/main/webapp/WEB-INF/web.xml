@@ -24,7 +24,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml,
-		    classpath:app-security.xml, classpath:tools-config.xml</param-value>
+		    classpath:app-security.xml, classpath:tools-config.xml,classpath:applicationContext-cxf.xml</param-value>
 	</context-param>
 
 	<filter>
@@ -69,5 +69,18 @@
 	    <servlet-name>AxisServlet</servlet-name>
 	    <url-pattern>/axis/*</url-pattern>
 	 </servlet-mapping>
-	
+	 
+	<servlet>
+	    <servlet-name>CXFServlet</servlet-name>
+	    <servlet-class>
+	       org.apache.cxf.transport.servlet.CXFServlet
+	    </servlet-class>
+	    <load-on-startup>1</load-on-startup> 
+	 </servlet>
+ 
+	 <servlet-mapping>
+	    <servlet-name>CXFServlet</servlet-name>
+	    <url-pattern>/cxf/*</url-pattern>
+	 </servlet-mapping>
+	 
 </web-app>

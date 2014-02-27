@@ -1,6 +1,6 @@
 <serviceGroup>
-    <messageReceiver
-				class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+	<messageReceiver
+		class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
 	<service name="HelloWs" targetNamespace="http://com.kovitad/">
 		<description>JNLPGenerator service</description>
 		<schema schemaNamespace="http://com.kovitad" />
@@ -12,14 +12,17 @@
 	</service>
 
 	<service name="ProductWs">
+		<port name="ProductWsPort" binding="tns:ProductWsSOAPBinding">
+		</port>
 		<description>
 			Example of simple spring service export
 		</description>
-		<parameter name="ServiceObjectSupplier">org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier</parameter>
+		<parameter name="ServiceObjectSupplier">org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier
+		</parameter>
 		<parameter name="SpringBeanName">exportProductServiceClass</parameter>
 		<operation name="listAll">
-		    <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+			<messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
 		</operation>
 	</service>
-	
+
 </serviceGroup>

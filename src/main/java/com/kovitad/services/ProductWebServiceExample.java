@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import com.kovitad.dao.ProductDao;
 import com.kovitad.domain.Product;
 
-@WebService(serviceName="ProductWs")
+@WebService(serviceName="ProductWs", portName="ProductServicePort")
 @SOAPBinding(style=Style.RPC)
 @Component(value="exportProductServiceClass")
 public class ProductWebServiceExample {

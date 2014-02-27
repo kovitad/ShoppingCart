@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<constant name="struts.devMode" value="true" />
-	<constant name="struts.action.excludePattern" value="/services/.*,/axis/.*" />
+	<constant name="struts.action.excludePattern" value="/services/.*,/axis/.*,/cxf/.*" />
 	<package name="basicstruts2" extends="struts-default">
 		<action name="addToCart" class="com.kovitad.action.AddToCartAction">
 			<result name="success">cartView.jsp </result>
