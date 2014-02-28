@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="counterModule"
+	class="com.kovitad.services.axis.module.CounterModule">
+	<Description>
+		Counts the incoming and outgoing messages
+	</Description>
+	<InFlow>
+		<handler name="IncomingMessageCountHandler"
+			class="com.kovitad.services.axis.handler.IncomingCounterHandler">
+			<order phase="Transport" after="RequestURIBasedDispatcher"
+				before="SOAPActionBasedDispatcher" />
+		</handler>
+	</InFlow>
+	<OutFlow>
+		<handler name="OutgoingMessageCountHandler"
+			class="com.kovitad.services.axis.handler.OutgoingCounterHandler">
+			<order phase="MessageOut" />
+		</handler>
+	</OutFlow>
+</module>

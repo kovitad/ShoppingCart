@@ -2,28 +2,52 @@
 <!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-    
-    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
-       <layout class="org.apache.log4j.PatternLayout"> 
-          <param name="ConversionPattern" value="%d %-5p %c.%M:%L - %m%n"/> 
-       </layout> 
-    </appender>
- 
-    <!-- specify the logging level for loggers from other libraries -->
-    <logger name="com.opensymphony">
-    	<level value="INFO" />
-    </logger>
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c.%M:%L - %m%n" />
+		</layout>
+	</appender>
+	<!-- Rolling file appender - in/out -->
+	<appender name="inout" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="./inout.log" />
+		<param name="MaxFileSize" value="10000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%t]: %c{1} - %m%n" />
+		</layout>
+	</appender>
+	<appender name="inout_async" class="org.apache.log4j.AsyncAppender">
+		<appender-ref ref="inout" />
+	</appender>
 
-    <logger name="org.apache.struts2">
-    	 <level value="INFO" />
-    </logger>
-    <logger name="org.springframework.security.core.SpringSecurityCoreVersion">
-       <level value="INFO" />
-    </logger>
-   <!-- for all other loggers log only debug and above log messages -->
-     <root>
-        <priority value="INFO"/> 
-        <appender-ref ref="STDOUT" /> 
-     </root> 
-    
+	<!-- specify the logging level for loggers from other libraries -->
+	<logger name="com.opensymphony">
+		<level value="INFO" />
+	</logger>
+
+	<logger name="org.apache.struts2">
+		<level value="INFO" />
+	</logger>
+	<logger name="org.springframework.security.core.SpringSecurityCoreVersion">
+		<level value="INFO" />
+	</logger>
+
+	<!-- Webservice in/out -->
+	<logger name="org.apache.cxf.interceptor.LoggingInInterceptor"
+		additivity="false">
+		<level value="info" />
+		<appender-ref ref="inout_async" />
+	</logger>
+	<logger name="org.apache.cxf.interceptor.LoggingOutInterceptor"
+		additivity="false">
+		<level value="info" />
+		<appender-ref ref="inout_async" />
+	</logger>
+
+	<!-- for all other loggers log only debug and above log messages -->
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="STDOUT" />
+	</root>
+
 </log4j:configuration>
