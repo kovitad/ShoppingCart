@@ -17,17 +17,19 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.builder.StAXBuilder;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.apache.axiom.om.xpath.AXIOMXPath;
-import org.apache.log4j.Logger;
+
 import org.jaxen.JaxenException;
 import org.springframework.stereotype.Component;
 
 import com.kovitad.dao.ProductDao;
 import com.kovitad.domain.Product;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 @Path("/productListing")
 @Component(value = "productClass")
+
 public class ProductServiceImpl implements ProductService {
-	Logger logger = Logger.getLogger(ProductServiceImpl.class);
+	Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 	@Resource
 	private ProductDao productDao;
 

@@ -474,16 +474,48 @@
 					<warName>ShoppingCard</warName>
 				</configuration>
 			</plugin>
+			<!--  
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<configuration>
+							<target>
+								
+								<ant dir="legacy-client/" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			-->
 			<plugin>
 				<groupId>org.apache.axis2</groupId>
 				<artifactId>axis2-aar-maven-plugin</artifactId>
-				<version>1.6.1</version>
+				<version>1.6.2</version>
 				<!--<version>${orbit.version.axis2}</version> -->
 				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-mar-maven-plugin</artifactId>
+				<version>1.6.2</version>
+				<extensions>true</extensions>
 				<configuration>
-					<aarName>org.fazlan.employee.axis2.orm.spring.service</aarName>
+					<classesDirectory>${project.build.directory}/classes</classesDirectory>
+					<moduleXmlFile>src/main/webapp/WEB-INF/modules/counterModule/META-INF/module.xml</moduleXmlFile>
+					<includeDependencies>false</includeDependencies>
+					<marName>counterModule</marName>
+					<outputDirectory>${project.build.directory}/mar</outputDirectory>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 </project>
